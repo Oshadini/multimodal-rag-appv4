@@ -115,9 +115,9 @@ if uploaded_file is not None:
                 infer_table_structure=True,
                 strategy='hi_res',
                 hi_res_model_name="yolox",
-                max_characters=4200,
-                new_after_n_chars=4000,
-                combine_text_under_n_chars=3200,
+                max_characters=3200,
+                new_after_n_chars=3000,
+                combine_text_under_n_chars=2200,
                 image_output_dir_path=image_path
             )
             return pdf_elements
