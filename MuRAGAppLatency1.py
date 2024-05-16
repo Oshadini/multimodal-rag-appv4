@@ -162,8 +162,7 @@ if uploaded_file is not None:
         # Use already populated session state variables
         texts = st.session_state["texts"]
         tables = st.session_state["tables"]
-        st.write(texts)
-        st.write(tables)
+       
     
     #st.write(os.environ)
 
@@ -234,8 +233,7 @@ if uploaded_file is not None:
         # Use already populated session state variables
         text_summaries = st.session_state["text_summaries"]
         table_summaries = st.session_state["table_summaries"]
-        st.write(text_summaries)
-        st.write(table_summaries)
+   
      
                                                                                             
     
