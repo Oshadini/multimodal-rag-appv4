@@ -553,9 +553,9 @@ if uploaded_file is not None:
     question = st.text_input('Enter a question')
     button1, button2 = st.columns([1, 1])
     with button1:
-        button1_click = st.button("Response Generation")
+        button1_click = st.button("Response Generation",style="width:100%;")
     with button2:
-        button2_click = st.button("Summarized Response Generation")
+        button2_click = st.button("Summarized Response Generation",style="width:100%;")
     if button1_click:
         vectorstore = Chroma(collection_name="mm_rag_mistral04",embedding_function=OpenAIEmbeddings(openai_api_key = openai.api_key))
         retriever_multi_vector_img=create_multi_vector_retriever(vectorstore,text_summaries,texts,table_summaries,tables,image_summaries,img_base64_list)
