@@ -99,7 +99,7 @@ st.markdown("""
             width: fit-content !important;
         }
     </style>
-    """, unsafe_allow_html=True)
+    """, unsafe_allow_html=True
 )
 
 st.header('MultiModal RAG App',divider='rainbow')
