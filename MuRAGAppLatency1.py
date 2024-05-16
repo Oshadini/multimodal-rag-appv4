@@ -152,6 +152,8 @@ if uploaded_file is not None:
         # Use already populated session state variables
         texts = st.session_state["texts"]
         tables = st.session_state["tables"]
+        st.write(texts)
+        st.write(tables)
     
     
 
@@ -217,11 +219,13 @@ if uploaded_file is not None:
             text_summaries, table_summaries = generate_text_summaries(texts, tables, summarize_texts=True)
         st.session_state["text_summaries"] = text_summaries
         st.session_state["table_summaries"] = table_summaries
-        st.write(f"{bullet_point} \t\tText & Table summaries generation completed")     
+        st.write(f"{bullet_point} \t\tText & Table summaries generation completed")
     else:
         # Use already populated session state variables
         text_summaries = st.session_state["text_summaries"]
         table_summaries = st.session_state["table_summaries"]
+        st.write(text_summaries)
+        st.write(table_summaries)
      
                                                                                             
     
@@ -480,7 +484,7 @@ if uploaded_file is not None:
         vectorstore = Chroma(collection_name="mm_rag_mistral04",embedding_function=OpenAIEmbeddings(openai_api_key = openai.api_key))
         retriever_multi_vector_img=create_multi_vector_retriever(vectorstore,text_summaries,texts,table_summaries,tables,image_summaries,img_base64_list)
         chain_multimodal_rag = multi_modal_rag_chain(retriever_multi_vector_img)
-        docs = retriever_multi_vector_img.get_relevant_documents(question, limit=1)
+        #docs = retriever_multi_vector_img.get_relevant_documents(question, limit=1)
         st.write(docs)
         processed_docs = split_image_text_types(docs)
         st.write("Processed Documents:", processed_docs)
