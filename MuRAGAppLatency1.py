@@ -76,6 +76,7 @@ generation_model = st.sidebar.selectbox('Select data', ('gpt-4-vision-preview', 
 
 max_concurrecy = st.sidebar.slider('Maximum Concurrency', 3, 4, 7)
 
+gen_model_temperature = st.sidebar.slider('Maximum Concurrency', 0, 0.2, 0.5)
 
 st.sidebar.subheader('Upload your file')
 uploaded_file = st.sidebar.file_uploader(label = "Upload your file",type="pdf")
@@ -104,8 +105,8 @@ if uploaded_file is not None:
         def pdf_ele(image_path,ele_path):
             pdf_elements = partition_pdf(
                 ele_path,
-                #chunking_strategy="by_title",
-                chunking_strategy="basic",
+                chunking_strategy="by_title",
+                #chunking_strategy="basic",
                 extract_images_in_pdf=True,
                 infer_table_structure=True,
                 strategy='hi_res',
@@ -156,7 +157,7 @@ if uploaded_file is not None:
         st.write(texts)
         st.write(tables)
     
-    st.write(os.environ)
+    #st.write(os.environ)
 
     # Generate summaries of text elements
     #@st.cache_data(show_spinner=False)
@@ -452,14 +453,14 @@ if uploaded_file is not None:
         """
 
         if generation_model == 'gemini-1.5-pro-latest':
-            model = ChatGoogleGenerativeAI(model="gemini-1.5-pro-latest",max_output_tokens=1024)
+            model = ChatGoogleGenerativeAI(temperature = gen_model_temperature, model="gemini-1.5-pro-latest",max_output_tokens=1024)
         elif generation_model == 'gpt-4-vision-preview':
             try:
-              model = ChatOpenAI(model="gpt-4-vision-preview", openai_api_key = openai.api_key, max_tokens=1024)
+              model = ChatOpenAI(temperature = gen_model_temperature, model="gpt-4-vision-preview", openai_api_key = openai.api_key, max_tokens=1024)
             except Exception as e:
-              model = ChatOpenAI(model="gpt-4-turbo", openai_api_key = openai.api_key, max_tokens=1024)
+              model = ChatOpenAI(temperature = gen_model_temperature, model="gpt-4-turbo", openai_api_key = openai.api_key, max_tokens=1024)
         else:
-            model = ChatOpenAI(model="gpt-4o", openai_api_key = openai.api_key, max_tokens=1024)
+            model = ChatOpenAI(temperature = gen_model_temperature, model="gpt-4o", openai_api_key = openai.api_key, max_tokens=1024)
 
 
         # RAG pipeline
