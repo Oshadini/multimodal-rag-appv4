@@ -76,6 +76,7 @@ generation_model = st.sidebar.selectbox('Select data', ('gpt-4-vision-preview', 
 st.sidebar.subheader('Maximum Concurrency')
 max_concurrecy = st.sidebar.slider('maximum number of concurrent batches executed simultaneously', 3, 4, 7)
 
+st.sidebar.subheader('Temperature')
 gen_model_temperature = st.sidebar.slider('Generation Model Temperature', 0.0, 0.2, 0.5)
 
 st.sidebar.subheader('Upload your file')
