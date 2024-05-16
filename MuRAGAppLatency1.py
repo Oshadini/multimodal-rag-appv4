@@ -155,7 +155,7 @@ if uploaded_file is not None:
         st.write(texts)
         st.write(tables)
     
-    
+    st.write(os.environ)
 
     # Generate summaries of text elements
     #@st.cache_data(show_spinner=False)
