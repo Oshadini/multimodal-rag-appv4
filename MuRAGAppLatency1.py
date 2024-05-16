@@ -89,7 +89,15 @@ Multi-Modal RAG App with Multi Vector Retriever
 
 #st.write(tables)
 
-
+st.markdown(
+    <style>
+    .stButton > button {
+        margin-right: 0px;
+    }
+    </style>
+   ,
+    unsafe_allow_html=True
+)
 
 st.header('MultiModal RAG App',divider='rainbow')
 st.write("Empower your research journey with MultiModal RAG App: Your intuitive partner for analyzing, summarizing, and answering your specific questions on documents")
@@ -553,10 +561,10 @@ if uploaded_file is not None:
     question = st.text_input('Enter a question')
     col1, col2 = st.columns(2)
     with col1:
-        st.markdown("<button style='width:100%;'>Response Generation</button>", unsafe_allow_html=True)
+        button1_click = st.button("Button 1")
     with col2:
-        st.markdown("<button style='width:100%;'>Summarized Response Generation</button>", unsafe_allow_html=True)
-    if st.button("Response Generation"):
+        button2_click = st.button("Button 2")
+    if button1_click:
         vectorstore = Chroma(collection_name="mm_rag_mistral04",embedding_function=OpenAIEmbeddings(openai_api_key = openai.api_key))
         retriever_multi_vector_img=create_multi_vector_retriever(vectorstore,text_summaries,texts,table_summaries,tables,image_summaries,img_base64_list)
         chain_multimodal_rag = multi_modal_rag_chain(retriever_multi_vector_img)
@@ -599,7 +607,7 @@ if uploaded_file is not None:
               break
         client.delete_collection("mm_rag_mistral04")
 
-    elif st.button ("Summarized Response Generation"):
+    elif button2_click:
         vectorstore = Chroma(collection_name="mm_rag_mistral05",embedding_function=OpenAIEmbeddings(openai_api_key = openai.api_key))
         retriever_multi_vector_img=create_multi_vector_retriever(vectorstore,text_summaries,texts,table_summaries,tables,image_summaries,img_base64_list)
         chain_multimodal_rag2 = multi_modal_rag_chain(retriever_multi_vector_img)
