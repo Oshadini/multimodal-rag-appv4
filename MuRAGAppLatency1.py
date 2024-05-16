@@ -90,11 +90,13 @@ Multi-Modal RAG App with Multi Vector Retriever
 #st.write(tables)
 
 st.markdown(
+    """
     <style>
     .stButton > button {
        margin-right: 0 !important;
     }
     </style>
+    """
    ,
     unsafe_allow_html=True
 )
