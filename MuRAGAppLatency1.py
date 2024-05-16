@@ -89,7 +89,7 @@ Multi-Modal RAG App with Multi Vector Retriever
 
 #st.write(tables)
 
-st.markdown(
+st.markdown("""
     <style>
         div[data-testid="column"] {
             width: fit-content !important;
