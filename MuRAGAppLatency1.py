@@ -551,7 +551,7 @@ if uploaded_file is not None:
      
    
     question = st.text_input('Enter a question')
-    col1, col2 = st.columns([4,4])
+    col1, col2 = st.columns([7,7])
     with col1:
         bt1 = st.button("Button 11")
     with col2:
