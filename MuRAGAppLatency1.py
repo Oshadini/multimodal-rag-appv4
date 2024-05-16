@@ -552,11 +552,11 @@ if uploaded_file is not None:
    
     question = st.text_input('Enter a question')
     button1, button2 = st.columns([1, 1])
-    with col1:
-        button1 = st.button("Response Generation",margin=0)
-    with col2:
-        button2 = st.button("Summarized Response Generation")
-    if button1:
+    with button1:
+        button1_click = st.button("Response Generation")
+    with button2:
+        button2_click = st.button("Summarized Response Generation")
+    if button1_click:
         vectorstore = Chroma(collection_name="mm_rag_mistral04",embedding_function=OpenAIEmbeddings(openai_api_key = openai.api_key))
         retriever_multi_vector_img=create_multi_vector_retriever(vectorstore,text_summaries,texts,table_summaries,tables,image_summaries,img_base64_list)
         chain_multimodal_rag = multi_modal_rag_chain(retriever_multi_vector_img)
@@ -599,7 +599,7 @@ if uploaded_file is not None:
               break
         client.delete_collection("mm_rag_mistral04")
 
-    elif button2:
+    elif button2_click:
         vectorstore = Chroma(collection_name="mm_rag_mistral05",embedding_function=OpenAIEmbeddings(openai_api_key = openai.api_key))
         retriever_multi_vector_img=create_multi_vector_retriever(vectorstore,text_summaries,texts,table_summaries,tables,image_summaries,img_base64_list)
         chain_multimodal_rag2 = multi_modal_rag_chain(retriever_multi_vector_img)
