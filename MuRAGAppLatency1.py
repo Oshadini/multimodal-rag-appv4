@@ -54,7 +54,7 @@ openai.api_key = st.secrets["OPENAI_API_KEY"]
 
 
 
-st.set_page_config(page_title="InfoGenie",layout='wide', initial_sidebar_state='expanded')
+st.set_page_config(page_title="MuRAG",layout='wide', initial_sidebar_state='expanded')
 
 with open('style.css') as f:
     st.markdown(f'<style>{f.read()}</style>', unsafe_allow_html=True)
@@ -90,6 +90,9 @@ Multi-Modal RAG App with Multi Vector Retriever
 #st.write(tables)
 
 
+
+st.header('MultiModal RAG App',divider='rainbow')
+st.write("Empower your research journey with MultiModal RAG App: Your intuitive partner for analyzing, summarizing, and answering your specific questions on documents")
 bullet_point = "◇"
 
 if uploaded_file is not None:
