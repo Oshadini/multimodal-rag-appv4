@@ -76,7 +76,7 @@ generation_model = st.sidebar.selectbox('Select data', ('gpt-4-vision-preview', 
 
 max_concurrecy = st.sidebar.slider('Maximum Concurrency', 3, 4, 7)
 
-gen_model_temperature = st.sidebar.slider('Maximum Concurrency', 0, 0.2, 0.5)
+gen_model_temperature = st.sidebar.slider('Maximum Concurrency', 0.0, 0.2, 0.5)
 
 st.sidebar.subheader('Upload your file')
 uploaded_file = st.sidebar.file_uploader(label = "Upload your file",type="pdf")
