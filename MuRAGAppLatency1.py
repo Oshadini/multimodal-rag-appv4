@@ -95,8 +95,8 @@ button {
     height: auto;
     padding-top: 10px !important;
     padding-bottom: 10px !important;
-    padding-left: 100px !important; 
-    padding-right: 100px !important;
+    padding-left: 150px !important; 
+    padding-right: 150px !important;
 }
 </style>
 """,
