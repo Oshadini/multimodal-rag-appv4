@@ -572,13 +572,16 @@ if uploaded_file is not None:
         unsafe_allow_html=True,
     )
 
-        # Display custom buttons
     st.markdown(
         """
-    
-            <button class="custom-button">Custom Button 1</button>
-        
-        
+        <div style="display: flex; justify-content: center;">
+            <div style="margin-right: 10px;">
+                <button class="custom-button">Custom Button 1</button>
+            </div>
+            <div>
+                <button class="custom-button">Custom Button 2</button>
+            </div>
+        </div>
         """,
         unsafe_allow_html=True
     )
