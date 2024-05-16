@@ -675,7 +675,11 @@ if uploaded_file is not None:
         
   
 
+if st.button("Streamlit Button 1"):
+    st.write("Streamlit Button 1 is clicked!")
 
+if st.button("Streamlit Button 2"):
+    st.write("Streamlit Button 2 is clicked!")
  
 
 
