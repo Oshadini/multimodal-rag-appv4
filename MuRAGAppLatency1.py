@@ -90,15 +90,16 @@ Multi-Modal RAG App with Multi Vector Retriever
 #st.write(tables)
 
 st.markdown(
-    """
     <style>
-    .long-button {
-        width: 200px;
-    }
+        div[data-testid="column"] {
+            width: fit-content !important;
+            flex: unset;
+        }
+        div[data-testid="column"] * {
+            width: fit-content !important;
+        }
     </style>
-    """
-   ,
-    unsafe_allow_html=True
+    """, unsafe_allow_html=True)
 )
 
 st.header('MultiModal RAG App',divider='rainbow')
