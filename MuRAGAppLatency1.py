@@ -532,7 +532,7 @@ if uploaded_file is not None:
         """
         Multi-modal RAG chain
         """
-
+    
         if generation_model == 'gemini-1.5-pro-latest':
             model = ChatGoogleGenerativeAI(temperature = gen_model_temperature, model="gemini-1.5-pro-latest",max_output_tokens=1024)
         elif generation_model == 'gpt-4-vision-preview':
@@ -542,8 +542,8 @@ if uploaded_file is not None:
               model = ChatOpenAI(temperature = gen_model_temperature, model="gpt-4-turbo", openai_api_key = openai.api_key, max_tokens=1024)
         else:
             model = ChatOpenAI(temperature = gen_model_temperature, model="gpt-4o", openai_api_key = openai.api_key, max_tokens=1024)
-
-
+    
+    
         # RAG pipeline
         chain = (
             {
@@ -554,7 +554,7 @@ if uploaded_file is not None:
             | model
             | StrOutputParser()
         )
-
+    
         return chain
     
     
