@@ -104,8 +104,8 @@ if uploaded_file is not None:
         def pdf_ele(image_path,ele_path):
             pdf_elements = partition_pdf(
                 ele_path,
-                chunking_strategy="by_title",
-                #chunking_strategy="basic",
+                #chunking_strategy="by_title",
+                chunking_strategy="basic",
                 extract_images_in_pdf=True,
                 infer_table_structure=True,
                 strategy='hi_res',
