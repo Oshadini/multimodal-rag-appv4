@@ -92,7 +92,7 @@ Multi-Modal RAG App with Multi Vector Retriever
 st.markdown(
     """
     <div style="display: flex; justify-content: center;">
-        <div style="margin-right: 20px;">
+        <div style="margin-right: 200px;">
             <button>Button 1</button>
         </div>
         <div>
