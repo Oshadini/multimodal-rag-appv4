@@ -94,7 +94,11 @@ Multi-Modal RAG App with Multi Vector Retriever
 st.header('MultiModal RAG App',divider='rainbow')
 st.write("Empower your research journey with MultiModal RAG App: Your intuitive partner for analyzing, summarizing, and answering your specific questions on documents")
 bullet_point = "◇"
-
+col1, col2 = st.columns(2)
+with col1:
+    button1 = st.button("Response Generation")
+with col2:
+    button2 = st.button("Summarized Response Generation")
 if uploaded_file is not None:
     if "pdf_elements" not in st.session_state:
         st.title("Extraction process:-")
@@ -553,7 +557,7 @@ if uploaded_file is not None:
      
    
     question = st.text_input('Enter a question')
-    if st.button("Response Generation"): #if(question):
+    if button1 = True:
         vectorstore = Chroma(collection_name="mm_rag_mistral04",embedding_function=OpenAIEmbeddings(openai_api_key = openai.api_key))
         retriever_multi_vector_img=create_multi_vector_retriever(vectorstore,text_summaries,texts,table_summaries,tables,image_summaries,img_base64_list)
         chain_multimodal_rag = multi_modal_rag_chain(retriever_multi_vector_img)
@@ -596,15 +600,15 @@ if uploaded_file is not None:
               break
         client.delete_collection("mm_rag_mistral04")
 
-    elif st.button("Summarized Response Generation"): #if(question):
-        vectorstore = Chroma(collection_name="mm_rag_mistral04",embedding_function=OpenAIEmbeddings(openai_api_key = openai.api_key))
+    elif button2 =True:
+        vectorstore = Chroma(collection_name="mm_rag_mistral05",embedding_function=OpenAIEmbeddings(openai_api_key = openai.api_key))
         retriever_multi_vector_img=create_multi_vector_retriever(vectorstore,text_summaries,texts,table_summaries,tables,image_summaries,img_base64_list)
-        chain_multimodal_rag = multi_modal_rag_chain(retriever_multi_vector_img)
+        chain_multimodal_rag2 = multi_modal_rag_chain(retriever_multi_vector_img)
         docs = retriever_multi_vector_img.get_relevant_documents(question, limit=1)
         #st.write(docs)
         processed_docs = split_image_text_types(docs)
         #st.write("Processed Documents:", processed_docs)
-        response= chain_multimodal_rag.invoke(question)
+        response= chain_multimodal_rag2.invoke(question)
         st.write(response)
 
 
@@ -625,6 +629,7 @@ if uploaded_file is not None:
               st.image(image_data)
               
               found_image = True  # Set the flag to True to indicate that an image has been found
+              client.delete_collection("mm_rag_mistral04")
               break
           elif "figure" in docs[i].lower() and docs[i+1].startswith('/9j'):
               base64_image = docs[i+1]
@@ -636,8 +641,9 @@ if uploaded_file is not None:
               #img = load_image(image_data)
               st.image(image_data)
               #found_image = True  # Set the flag to True to indicate that an image has been found
+              client.delete_collection("mm_rag_mistral05")
               break
-        client.delete_collection("mm_rag_mistral04")
+        
   
 
 
