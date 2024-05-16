@@ -484,8 +484,8 @@ if uploaded_file is not None:
         vectorstore = Chroma(collection_name="mm_rag_mistral04",embedding_function=OpenAIEmbeddings(openai_api_key = openai.api_key))
         retriever_multi_vector_img=create_multi_vector_retriever(vectorstore,text_summaries,texts,table_summaries,tables,image_summaries,img_base64_list)
         chain_multimodal_rag = multi_modal_rag_chain(retriever_multi_vector_img)
-        #docs = retriever_multi_vector_img.get_relevant_documents(question, limit=1)
-        st.write(docs)
+        docs = retriever_multi_vector_img.get_relevant_documents(question, limit=1)
+        #st.write(docs)
         processed_docs = split_image_text_types(docs)
         st.write("Processed Documents:", processed_docs)
         response= chain_multimodal_rag.invoke(question)
@@ -522,7 +522,7 @@ if uploaded_file is not None:
               #found_image = True  # Set the flag to True to indicate that an image has been found
               break
         client.delete_collection("mm_rag_mistral04")
-        #os.remove("./temp2.pdf")
+        os.remove("./temp2.pdf")
     
 
         #os.remove("./temp2.pdf")
