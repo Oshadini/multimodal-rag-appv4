@@ -512,6 +512,35 @@ if uploaded_file is not None:
                 "context": retriever | RunnableLambda(split_image_text_types),
                 "question": RunnablePassthrough(),
             }
+            | RunnableLambda(img_prompt_func2)
+            | model
+            | StrOutputParser()
+        )
+
+        return chain
+    
+    def multi_modal_rag_chain2(retriever):
+        """
+        Multi-modal RAG chain
+        """
+
+        if generation_model == 'gemini-1.5-pro-latest':
+            model = ChatGoogleGenerativeAI(temperature = gen_model_temperature, model="gemini-1.5-pro-latest",max_output_tokens=1024)
+        elif generation_model == 'gpt-4-vision-preview':
+            try:
+              model = ChatOpenAI(temperature = gen_model_temperature, model="gpt-4-vision-preview", openai_api_key = openai.api_key, max_tokens=1024)
+            except Exception as e:
+              model = ChatOpenAI(temperature = gen_model_temperature, model="gpt-4-turbo", openai_api_key = openai.api_key, max_tokens=1024)
+        else:
+            model = ChatOpenAI(temperature = gen_model_temperature, model="gpt-4o", openai_api_key = openai.api_key, max_tokens=1024)
+
+
+        # RAG pipeline
+        chain = (
+            {
+                "context": retriever | RunnableLambda(split_image_text_types),
+                "question": RunnablePassthrough(),
+            }
             | RunnableLambda(img_prompt_func)
             | model
             | StrOutputParser()
@@ -519,7 +548,6 @@ if uploaded_file is not None:
 
         return chain
     
-
     
     
      
@@ -569,7 +597,7 @@ if uploaded_file is not None:
         client.delete_collection("mm_rag_mistral04")
 
     elif st.button("Summarized Response Generation"): #if(question):
-                vectorstore = Chroma(collection_name="mm_rag_mistral04",embedding_function=OpenAIEmbeddings(openai_api_key = openai.api_key))
+        vectorstore = Chroma(collection_name="mm_rag_mistral04",embedding_function=OpenAIEmbeddings(openai_api_key = openai.api_key))
         retriever_multi_vector_img=create_multi_vector_retriever(vectorstore,text_summaries,texts,table_summaries,tables,image_summaries,img_base64_list)
         chain_multimodal_rag = multi_modal_rag_chain(retriever_multi_vector_img)
         docs = retriever_multi_vector_img.get_relevant_documents(question, limit=1)
