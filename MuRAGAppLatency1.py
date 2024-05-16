@@ -89,7 +89,7 @@ Multi-Modal RAG App with Multi Vector Retriever
 
 #st.write(tables)
 
-st.markdown("""
+st.markdown(
     """
     <div style="display: flex; justify-content: center;">
         <div style="margin-right: 20px;">
@@ -568,7 +568,7 @@ if uploaded_file is not None:
         button1_click = st.button("Response Generation")
     with col2:
         button2_click = st.button("Summarized Response Generation")
-    if button1_click:
+    if st.button("Button 1"):
         vectorstore = Chroma(collection_name="mm_rag_mistral04",embedding_function=OpenAIEmbeddings(openai_api_key = openai.api_key))
         retriever_multi_vector_img=create_multi_vector_retriever(vectorstore,text_summaries,texts,table_summaries,tables,image_summaries,img_base64_list)
         chain_multimodal_rag = multi_modal_rag_chain(retriever_multi_vector_img)
@@ -611,7 +611,7 @@ if uploaded_file is not None:
               break
         client.delete_collection("mm_rag_mistral04")
 
-    elif button2_click:
+    elif st.button("Button 2"):
         vectorstore = Chroma(collection_name="mm_rag_mistral05",embedding_function=OpenAIEmbeddings(openai_api_key = openai.api_key))
         retriever_multi_vector_img=create_multi_vector_retriever(vectorstore,text_summaries,texts,table_summaries,tables,image_summaries,img_base64_list)
         chain_multimodal_rag2 = multi_modal_rag_chain(retriever_multi_vector_img)
