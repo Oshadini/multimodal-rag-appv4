@@ -93,8 +93,8 @@ st.markdown(
 <style>
 button {
     height: auto;
-    padding-top: 10px !important;
-    padding-bottom: 10px !important;
+    padding-top: 1px !important;
+    padding-bottom: 1px !important;
     padding-left: 200px !important; 
     padding-right: 200px !important;
 }
