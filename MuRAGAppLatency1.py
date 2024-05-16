@@ -109,6 +109,7 @@ if uploaded_file is not None:
                 extract_images_in_pdf=True,
                 infer_table_structure=True,
                 strategy='hi_res',
+                hi_res_model_name="yolox",
                 max_characters=4200,
                 new_after_n_chars=4000,
                 combine_text_under_n_chars=3200,
