@@ -551,12 +551,12 @@ if uploaded_file is not None:
      
    
     question = st.text_input('Enter a question')
-    button1, button2 = st.columns(2)
-    with button1:
-        st.markdown("<button style='width:100%;'>Button 1</button>", unsafe_allow_html=True)
-    with button2:
-        st.markdown("<button style='width:100%;'>Button 2</button>", unsafe_allow_html=True)
-    if button1:
+    col1, col2 = st.columns(2)
+    with col1:
+        st.markdown("<button style='width:100%;'>Response Generation</button>", unsafe_allow_html=True)
+    with col2:
+        st.markdown("<button style='width:100%;'>Summarized Response Generation</button>", unsafe_allow_html=True)
+    if st.button("Response Generation"):
         vectorstore = Chroma(collection_name="mm_rag_mistral04",embedding_function=OpenAIEmbeddings(openai_api_key = openai.api_key))
         retriever_multi_vector_img=create_multi_vector_retriever(vectorstore,text_summaries,texts,table_summaries,tables,image_summaries,img_base64_list)
         chain_multimodal_rag = multi_modal_rag_chain(retriever_multi_vector_img)
@@ -599,7 +599,7 @@ if uploaded_file is not None:
               break
         client.delete_collection("mm_rag_mistral04")
 
-    elif button2:
+    elif "Summarized Response Generation":
         vectorstore = Chroma(collection_name="mm_rag_mistral05",embedding_function=OpenAIEmbeddings(openai_api_key = openai.api_key))
         retriever_multi_vector_img=create_multi_vector_retriever(vectorstore,text_summaries,texts,table_summaries,tables,image_summaries,img_base64_list)
         chain_multimodal_rag2 = multi_modal_rag_chain(retriever_multi_vector_img)
