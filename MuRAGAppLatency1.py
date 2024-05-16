@@ -560,7 +560,7 @@ if uploaded_file is not None:
     st.markdown(
         """
     <style>
-    button {
+    .custom-button {
         height: auto;
         padding-top: 10px !important;
         padding-bottom: 10px !important;
@@ -571,6 +571,18 @@ if uploaded_file is not None:
     """,
         unsafe_allow_html=True,
     )
+
+        # Display custom buttons
+    st.markdown(
+        """
+    
+            <button class="custom-button">Custom Button 1</button>
+        
+        
+        """,
+        unsafe_allow_html=True
+    )
+
     if bt1:
         vectorstore = Chroma(collection_name="mm_rag_mistral04",embedding_function=OpenAIEmbeddings(openai_api_key = openai.api_key))
         retriever_multi_vector_img=create_multi_vector_retriever(vectorstore,text_summaries,texts,table_summaries,tables,image_summaries,img_base64_list)
