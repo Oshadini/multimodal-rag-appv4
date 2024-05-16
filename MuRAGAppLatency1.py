@@ -88,6 +88,18 @@ Multi-Modal RAG App with Multi Vector Retriever
 ''')
 
 #st.write(tables)
+st.markdown(
+    """
+<style>
+button {
+    height: auto;
+    padding-top: 10px !important;
+    padding-bottom: 10px !important;
+}
+</style>
+""",
+    unsafe_allow_html=True,
+)
 
 
 
