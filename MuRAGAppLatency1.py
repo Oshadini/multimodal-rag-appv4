@@ -90,16 +90,17 @@ Multi-Modal RAG App with Multi Vector Retriever
 #st.write(tables)
 
 st.markdown("""
-    <style>
-        div[data-testid="column"] {
-            width: fit-content !important;
-            flex: unset;
-        }
-        div[data-testid="column"] * {
-            width: fit-content !important;
-        }
-    </style>
-    """, unsafe_allow_html=True
+    """
+    <div style="display: flex; justify-content: center;">
+        <div style="margin-right: 20px;">
+            <button>Button 1</button>
+        </div>
+        <div>
+            <button>Button 2</button>
+        </div>
+    </div>
+    """
+    , unsafe_allow_html=True
 )
 
 st.header('MultiModal RAG App',divider='rainbow')
@@ -564,9 +565,9 @@ if uploaded_file is not None:
     question = st.text_input('Enter a question')
     col1, col2 = st.columns([1,1])
     with col1:
-        button1_click = st.button("                                Response Generation                            ")
+        button1_click = st.button("Response Generation")
     with col2:
-        button2_click = st.button("    Summarized Response Generation     ")
+        button2_click = st.button("Summarized Response Generation")
     if button1_click:
         vectorstore = Chroma(collection_name="mm_rag_mistral04",embedding_function=OpenAIEmbeddings(openai_api_key = openai.api_key))
         retriever_multi_vector_img=create_multi_vector_retriever(vectorstore,text_summaries,texts,table_summaries,tables,image_summaries,img_base64_list)
