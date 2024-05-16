@@ -553,9 +553,9 @@ if uploaded_file is not None:
     question = st.text_input('Enter a question')
     col1, col2 = st.columns([7,7])
     with col1:
-        bt1 = st.custom-button("Button 11")
+        bt1 = st.button("Button 11")
     with col2:
-        bt2 = st.custom-button("Button 22")
+        bt2 = st.button("Button 22")
         #st.write(tables)
     st.markdown(
         """
