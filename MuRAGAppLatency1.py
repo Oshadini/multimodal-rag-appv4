@@ -546,7 +546,17 @@ if uploaded_file is not None:
         return chain
     
     
-    #st.write(tables)
+
+
+     
+   
+    question = st.text_input('Enter a question')
+    col1, col2 = st.columns([7,7])
+    with col1:
+        bt1 = st.button("Button 11")
+    with col2:
+        bt2 = st.button("Button 22")
+        #st.write(tables)
     st.markdown(
         """
     <style>
@@ -561,15 +571,6 @@ if uploaded_file is not None:
     """,
         unsafe_allow_html=True,
     )
-
-     
-   
-    question = st.text_input('Enter a question')
-    col1, col2 = st.columns([7,7])
-    with col1:
-        bt1 = st.button("Button 11")
-    with col2:
-        bt2 = st.button("Button 22")
     if bt1:
         vectorstore = Chroma(collection_name="mm_rag_mistral04",embedding_function=OpenAIEmbeddings(openai_api_key = openai.api_key))
         retriever_multi_vector_img=create_multi_vector_retriever(vectorstore,text_summaries,texts,table_summaries,tables,image_summaries,img_base64_list)
