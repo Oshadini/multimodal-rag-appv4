@@ -94,11 +94,7 @@ Multi-Modal RAG App with Multi Vector Retriever
 st.header('MultiModal RAG App',divider='rainbow')
 st.write("Empower your research journey with MultiModal RAG App: Your intuitive partner for analyzing, summarizing, and answering your specific questions on documents")
 bullet_point = "◇"
-col1, col2 = st.columns(2)
-with col1:
-    button1 = st.button("Response Generation")
-with col2:
-    button2 = st.button("Summarized Response Generation")
+
 if uploaded_file is not None:
     if "pdf_elements" not in st.session_state:
         st.title("Extraction process:-")
@@ -555,6 +551,11 @@ if uploaded_file is not None:
      
    
     question = st.text_input('Enter a question')
+    col1, col2 = st.columns(2)
+    with col1:
+        button1 = st.button("Response Generation",margin=0)
+    with col2:
+        button2 = st.button("Summarized Response Generation")
     if button1:
         vectorstore = Chroma(collection_name="mm_rag_mistral04",embedding_function=OpenAIEmbeddings(openai_api_key = openai.api_key))
         retriever_multi_vector_img=create_multi_vector_retriever(vectorstore,text_summaries,texts,table_summaries,tables,image_summaries,img_base64_list)
