@@ -87,21 +87,6 @@ st.sidebar.markdown('''
 Multi-Modal RAG App with Multi Vector Retriever
 ''')
 
-#st.write(tables)
-st.markdown(
-    """
-<style>
-button {
-    height: auto;
-    padding-top: 10px !important;
-    padding-bottom: 10px !important;
-    padding-left: 175px !important; 
-    padding-right: 175px !important;
-}
-</style>
-""",
-    unsafe_allow_html=True,
-)
 
 
 
@@ -561,7 +546,22 @@ if uploaded_file is not None:
         return chain
     
     
-    
+    #st.write(tables)
+    st.markdown(
+        """
+    <style>
+    button {
+        height: auto;
+        padding-top: 10px !important;
+        padding-bottom: 10px !important;
+        padding-left: 175px !important; 
+        padding-right: 175px !important;
+    }
+    </style>
+    """,
+        unsafe_allow_html=True,
+    )
+
      
    
     question = st.text_input('Enter a question')
